@@ -3,33 +3,25 @@
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
-    public class FacebookController : Controller
+    public class TwitterController : Controller
     {
-        private Module.ModuleFacebook module { get; set; }
+        private Module.ModuleTwitter module { get; set; }
 
-        public FacebookController()
+        public TwitterController()
         {
-            module = new Module.ModuleFacebook();
+            module = new Module.ModuleTwitter();
         }
-        
+
         [HttpGet]
         public string Index()
         {
             return module.GetRequest();
         }
 
-        [HttpPost]
-        public string Post([FromBody] string value)
-        {
-            return module.PostRequest();
-        }
-
-        /*
         [HttpGet("toto/{id}")]
         public string Get(int id)
         {
             return $"toto-id = {id}";
         }
-        */
     }
 }
