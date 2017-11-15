@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
@@ -18,10 +19,11 @@ namespace Api.Controllers
             return module.GetRequest();
         }
 
-        [HttpGet("toto/{id}")]
-        public string Get(int id)
+
+        [HttpPost("Post")]
+        public string Post(string Name)
         {
-            return $"toto-id = {id}";
+            return module.PostRequest(Name);
         }
     }
 }
