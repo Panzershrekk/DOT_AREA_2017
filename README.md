@@ -16,4 +16,8 @@ All the commit will respect this format :
 
 ## Dependencies
 ### JsonSerialization
-https://github.com/codecutout/JsonApiSerializer
+https://github.com/codecutout/JsonApiSerializer/
+### MySqlConnection
+https://www.nuget.org/packages/MySqlConnector/
+### Orm
+https://github.com/StackExchange/Dapper/
