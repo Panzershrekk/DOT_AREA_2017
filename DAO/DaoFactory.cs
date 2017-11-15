@@ -37,7 +37,8 @@ namespace DAO
 
             var connectionString =
                 $"Server={Ip}; database={Database}; " +
-                $"UID={Username}; password={Password}";
+                $"UID={Username}; password={Password}; " +
+                "Allow User Variables=True";
             var connection = new MySqlConnection(connectionString);
             var database = new Database(connection)
             {

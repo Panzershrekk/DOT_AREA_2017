@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using System.Linq;
+using Dapper;
 using DAO;
 using Xunit;
 
@@ -35,7 +37,7 @@ namespace UnitTests
         [Fact]
         public void InsertSimpleUserInDataBase()
         {
-            var user = new User
+            var user = new User()
             {
                 Username = "username",
                 Password = "password",
@@ -44,6 +46,17 @@ namespace UnitTests
             };
 
             Assert.Equal(user.InsertInDatabase(Database), 1);
+        }
+
+        [Fact]
+        public void GenerateUserModelFromDb()
+        {
+            var user = Database.Query<User>("SELECT * FROM user", new { id = 3}).First();
+            Assert.Equal(user.Id, 3);
+            Assert.Equal(user.Firstname, "Guillaume");
+            Assert.Equal(user.Lastname, "CAUCHOIS");
+            Assert.Equal(user.Username, "username");
+            Assert.Equal(user.Password, "password");
         }
     }
 }

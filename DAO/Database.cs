@@ -33,11 +33,9 @@ namespace DAO
             }
         }
 
-        public IEnumerable<dynamic> Query(string sql,
-            object param = null, SqlTransaction transaction = null,
-            bool buffered = true)
+        public IEnumerable<dynamic> Query<T>(string sql, object param = null)
         {
-            return Connection.Query(sql, param, transaction, buffered);
+            return (IEnumerable<dynamic>) Connection.Query<T>(sql);
         }
         
         public int Execute(string sql,
