@@ -13,6 +13,10 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="client_secret.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GmailModule\GmailModule.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
     <ProjectReference Include="..\ModuleFacebook\ModuleFacebook.csproj" />
     <ProjectReference Include="..\ModuleTwitter\ModuleTwitter.csproj" />
