@@ -31,7 +31,8 @@ namespace Module
                 var newFriendList = SteamWebAPI.General().ISteamUser().GetFriendList(SteamIdentity.FromSteamID(76561198062399869), RelationshipType.All).GetResponseString();
                 if (!oldFriendList.Equals(newFriendList))
                 {
-                    checkDifference(oldFriendList, newFriendList);
+                    checkDifference(newFriendList, oldFriendList);
+                    oldFriendList = newFriendList;
                 }
             }
         }
@@ -49,11 +50,33 @@ namespace Module
 
                     if (!JToken.DeepEquals(sourceProperty.Value, targetProp.Value))
                     {
-                        Console.WriteLine(string.Format("{0} property value is changed", sourceProperty.Value.Last.Last));
+                        var latestFriend = 0;
+                        var latestFriendId = "Error";
+                        foreach (var test in sourceProperty.Value["friends"])
+                        {
+                            int current = int.Parse(test["friend_since"].ToString());
+                            if (current >= latestFriend)
+                            {
+                                latestFriend = current;
+                                latestFriendId = test["steamid"].ToString();
+                            }
+                        }
+                        Console.WriteLine(latestFriendId);
                     }
                     else
                     {
-                        Console.WriteLine(string.Format("{0} property value didn't change", sourceProperty.Key));
+                        var latestFriend = 0;
+                        var latestFriendId = "Error";
+                        foreach (var test in sourceProperty.Value["friends"])
+                        {
+                            int current = int.Parse(test["friend_since"].ToString());
+                            if (current >= latestFriend)
+                            {
+                                latestFriend = current;
+                                latestFriendId = test["steamid"].ToString();
+                            }
+                        }
+                        Console.WriteLine(latestFriendId);
                     }
                 }
             }
@@ -62,5 +85,6 @@ namespace Module
                 Console.WriteLine("Objects are same");
             }
         }
+
     }
 }
