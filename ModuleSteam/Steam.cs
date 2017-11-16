@@ -15,15 +15,13 @@ namespace Module
     {
         public override string GetRequest()
         {
-            //535AB6031548709DFEEB34CABB80601E
-           SteamStream s = new SteamStream();
+           //SteamStream s = new SteamStream();
            SteamWebAPI.SetGlobalKey("535AB6031548709DFEEB34CABB80601E");
           // var response = SteamWebAPI.General().IPlayerService()
             //    .GetOwnedGames(SteamIdentity.FromAccountID(76561197998335096)).GetResponseString();
             var response = SteamWebAPI.General().ISteamUser().GetFriendList(SteamIdentity.FromSteamID(76561198062399869), RelationshipType.All).GetResponseString();
 
             return (response);
-            //return JsonConvert.SerializeObject(response, new JsonApiSerializerSettings());
         }
 
         public override string PostRequest()
