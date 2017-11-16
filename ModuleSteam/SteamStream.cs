@@ -18,6 +18,7 @@ namespace Module
     {
         public SteamStream()
         {
+            SteamWebAPI.SetGlobalKey("535AB6031548709DFEEB34CABB80601E");
             Task task = new Task(new Action(CompareFriendList));
             task.Start();
         }
