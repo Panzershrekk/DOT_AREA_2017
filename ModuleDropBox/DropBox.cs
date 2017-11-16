@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Dropbox.Api;
+using Dropbox.Api.Files;
 using JsonApiSerializer;
 using Module;
 using Newtonsoft.Json;
@@ -11,27 +12,30 @@ namespace Module
 {
     public class DropBox : AModule
     {
-        DropboxClient dbx = new DropboxClient("KuxKIuxdEAAAAAAAAAAAMhspYWaGX1xEky3hVlRVkjuxz2PqqQvwPkLDPiCkY2oV");
+        private DropboxClient dbx = new DropboxClient("KuxKIuxdEAAAAAAAAAAAMhspYWaGX1xEky3hVlRVkjuxz2PqqQvwPkLDPiCkY2oV");
 
         public DropBox()
         {
         }
+
         public override string GetRequest()
         {
-            var list = dbx.Files.ListFolderAsync(string.Empty);
+            var list = dbx.Files.ListFolderAsync(string.Empty, true);
             return JsonConvert.SerializeObject(list, new JsonApiSerializerSettings());
         }
 
         public override string PostRequest()
         {
-            return "200 OK";
-            //  return JsonConvert.SerializeObject("post dropBox", new JsonApiSerializerSettings());
+            return JsonConvert.SerializeObject("post dropBox", new JsonApiSerializerSettings());
         }
-
-        public string GetFilesFolder(string folder)
+      
+        public void Core()
         {
-            var ret = this.dbx.Files.ListFolderAsync(folder.ToString());
-            return JsonConvert.SerializeObject(ret, new JsonApiSerializerSettings());
+            while (true)
+            {
+                var list = dbx.Files.ListFolderAsync(string.Empty, true);
+
+            }
         }
 
         private string GetSha256Hash(HMACSHA256 sha256Hash, string input)
@@ -55,6 +59,12 @@ namespace Module
                 return true;
 
             return false;
+        }
+
+        public string GetNameAccount(string acc)
+        {
+            var ret = dbx.Users.GetAccountAsync(acc);
+            return ret.Result.Name.DisplayName;
         }
     }
 }
