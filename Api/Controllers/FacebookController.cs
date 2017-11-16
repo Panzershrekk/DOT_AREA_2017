@@ -18,6 +18,12 @@ namespace Api.Controllers
             return module.GetRequest();
         }
 
+        [HttpPost]
+        public string Post([FromBody] string value)
+        {
+            return module.PostRequest();
+        }
+
         /*
         [HttpGet("toto/{id}")]
         public string Get(int id)
