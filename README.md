@@ -14,6 +14,14 @@ All the commit will respect this format :
 
 ```
 
+The format of the {type} must respect this enumeration :
+* + for commit a feature, improvement
+* - for commit a revert or a deletion
+* * for commit a fix, hotfix
+* M for commit a merge
+
+The {Scope}, {CommitTitle} and {CommitDescription} must be written in comprehensible english.
+
 ## Dependencies
 ### JsonSerialization
 https://github.com/codecutout/JsonApiSerializer/
