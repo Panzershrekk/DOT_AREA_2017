@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Apis" Version="1.30.0" />
+    <PackageReference Include="Google.Apis.Gmail.v1" Version="1.30.0.1034" />
+    <PackageReference Include="JsonApiSerializer" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{E5257B2C-56AB-4211-A224-24CB559B7C81}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Module\Module.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Api\client_secret.json">
+      <Link>client_secret.json</Link>
+    </Content>
+  </ItemGroup>
+</Project>

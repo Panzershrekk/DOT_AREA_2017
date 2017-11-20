@@ -16,7 +16,7 @@ namespace Api.Controllers
         [HttpGet]
         public string Index()
         {
-            return module.GetRequest();
+            return module.GetUsername();
         }
 
 
