@@ -20,13 +20,9 @@ namespace Module
         static string[] Scopes = { GmailService.Scope.GmailReadonly };
         static string ApplicationName = "Gmail API .NET Quickstart";
         static public GmailService MyService = CreateService();
-
         // REQUEST HERE
         public override string GetRequest()
         {
-            /*GetLabel();
-            GetMessage("youtube");
-            SendMessage("warin-adrien@hotmail.fr", "test", "hello world!");*/
             return JsonConvert.SerializeObject("Hello World!", new JsonApiSerializerSettings());
         }
 
@@ -142,8 +138,6 @@ namespace Module
             {
                 if (i <= 5)
                 {
-                    /*Console.WriteLine(service.Users.Messages.Get("me", r.Id).Execute().InternalDate);*/
-                    /*Console.WriteLine(MyService.Users.Messages.Get("me", r.Id).Execute().LabelIds[0]);*/
                     if (MyService.Users.Messages.Get("me", r.Id).Execute().LabelIds[0] == "UNREAD")
                     {
                         msg.Add("-- Mail --\r\n");
