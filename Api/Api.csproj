@@ -6,8 +6,10 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.3" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
@@ -16,10 +18,17 @@
     <None Include="client_secret.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GmailModule\GmailModule.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
+    <ProjectReference Include="..\ModuleDropBox\ModuleDropBox.csproj" />
     <ProjectReference Include="..\ModuleFacebook\ModuleFacebook.csproj" />
+    <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />
     <ProjectReference Include="..\ModuleTwitter\ModuleTwitter.csproj" />
+    <ProjectReference Include="..\ModuleSteam\ModuleSteam.csproj" />
     <ProjectReference Include="..\Module\Module.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\README.md">
+      <Link>README.md</Link>
+    </Content>
   </ItemGroup>
 </Project>

@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Apis.Gmail.v1" Version="1.30.0.1034" />
     <PackageReference Include="JsonApiSerializer" Version="1.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="SteamWebAPI" Version="1.0.14.42195" />
   </ItemGroup>
 
   <ItemGroup>

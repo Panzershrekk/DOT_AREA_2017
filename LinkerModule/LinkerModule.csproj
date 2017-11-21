@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModuleFacebook\ModuleFacebook.csproj" />
+    <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />
+    <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />
+    <ProjectReference Include="..\ModuleTwitter\ModuleTwitter.csproj" />
+    <ProjectReference Include="..\Module\Module.csproj" />
+  </ItemGroup>
+</Project>
