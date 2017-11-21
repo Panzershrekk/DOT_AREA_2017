@@ -7,14 +7,6 @@ namespace Module
 {
     public class ModuleFacebook : AModule
     {
-        public override string GetRequest()
-        {
-            return JsonConvert.SerializeObject("", new JsonApiSerializerSettings());
-        }
-
-        public override string PostRequest()
-        {
-            return JsonConvert.SerializeObject("", new JsonApiSerializerSettings());
-        }
+        
     }
 }

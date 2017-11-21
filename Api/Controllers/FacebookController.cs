@@ -1,35 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using Module;
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     public class FacebookController : Controller
     {
-        private Module.ModuleFacebook module { get; set; }
+        private ModuleFacebook module { get; set; }
 
         public FacebookController()
         {
-            module = new Module.ModuleFacebook();
+            module = new ModuleFacebook();
         }
         
         [HttpGet]
         public string Index()
         {
-            return module.GetRequest();
+            throw new NotImplementedException();
         }
 
         [HttpPost]
         public string Post([FromBody] string value)
         {
-            return module.PostRequest();
+            throw new NotImplementedException();
         }
-
-        /*
-        [HttpGet("toto/{id}")]
-        public string Get(int id)
-        {
-            return $"toto-id = {id}";
-        }
-        */
     }
 }

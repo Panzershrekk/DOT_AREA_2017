@@ -1,4 +1,6 @@
 ﻿using DAO;
+using Module;
+using Tweetinvi.Streams;
 
 namespace Api
 {
@@ -12,20 +14,27 @@ namespace Api
             Database = daoFactory.GetInstance();
 
             const string initTableRequest = "CREATE TABLE IF NOT EXISTS `user` (" +
-                "`id` int(11) NOT NULL AUTO_INCREMENT," +
-                "`username` varchar(255) DEFAULT NULL," +
-                "`password` varchar(255) DEFAULT NULL," +
-                "`firstname` varchar(255) DEFAULT NULL," +
-                "`lastname` varchar(255) DEFAULT NULL," +
-                "PRIMARY KEY (`id`)" +
-                ") ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;";
+                                            "`id` int(11) NOT NULL AUTO_INCREMENT," +
+                                            "`username` varchar(255) DEFAULT NULL," +
+                                            "`password` varchar(255) DEFAULT NULL," +
+                                            "`firstname` varchar(255) DEFAULT NULL," +
+                                            "`lastname` varchar(255) DEFAULT NULL," +
+                                            "`email` varchar(255) DEFAULT NULL," +
+                                            "PRIMARY KEY (`id`)" +
+                                            ") ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;";
             
             Database.Execute(initTableRequest);
+        }
+
+        private static void InitTwitterStreaming()
+        {
+            var twitterStreaming = new TwitterStreaming();
         }
         
         public void Init()
         {
             InitDatabase();
+            InitTwitterStreaming();
         }
     }
 }

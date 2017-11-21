@@ -42,7 +42,8 @@ namespace UnitTests
                 Username = "username",
                 Password = "password",
                 Firstname = "Guillaume",
-                Lastname = "CAUCHOIS"
+                Lastname = "CAUCHOIS",
+                Email = "guillaume.cauchois@epitech.eu"
             };
 
             Assert.Equal(user.InsertInDatabase(Database), 1);
