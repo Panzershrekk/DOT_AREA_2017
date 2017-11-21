@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTwitter", "ModuleTwit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleGmail", "ModuleGmail\ModuleGmail.csproj", "{EC5C3825-550F-4D66-A5F0-3D87043AA077}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleDropBox", "ModuleDropBox\ModuleDropBox.csproj", "{7CBA147B-1513-4D71-8F23-1BE5BB194421}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,9 +65,16 @@ Global
 		{EC5C3825-550F-4D66-A5F0-3D87043AA077}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC5C3825-550F-4D66-A5F0-3D87043AA077}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC5C3825-550F-4D66-A5F0-3D87043AA077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CBA147B-1513-4D71-8F23-1BE5BB194421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CBA147B-1513-4D71-8F23-1BE5BB194421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CBA147B-1513-4D71-8F23-1BE5BB194421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CBA147B-1513-4D71-8F23-1BE5BB194421}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC46F1BC-8B35-4BBF-AE50-C19A79760A3C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F530CC0E-46B4-4B69-972C-E148E3448FED}
