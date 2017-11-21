@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GmailModule\GmailModule.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
+    <ProjectReference Include="..\ModuleBattlenet\ModuleBattlenet.csproj" />
     <ProjectReference Include="..\ModuleFacebook\ModuleFacebook.csproj" />
     <ProjectReference Include="..\ModuleTwitter\ModuleTwitter.csproj" />
     <ProjectReference Include="..\Module\Module.csproj" />

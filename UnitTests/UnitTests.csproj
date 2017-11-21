@@ -10,5 +10,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj" />
+    <ProjectReference Include="..\ModuleBattlenet\ModuleBattlenet.csproj" />
+    <ProjectReference Include="..\Module\Module.csproj" />
   </ItemGroup>
 </Project>

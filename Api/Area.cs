@@ -25,7 +25,7 @@ namespace Api
         
         public void Init()
         {
-            InitDatabase();
+            //InitDatabase();
         }
     }
 }
