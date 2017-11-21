@@ -23,7 +23,7 @@
     <ProjectReference Include="..\ModuleFacebook\ModuleFacebook.csproj" />
     <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />
     <ProjectReference Include="..\ModuleTwitter\ModuleTwitter.csproj" />
-    <ProjectReference Include="..\Module\Module.csproj" />
+    <ProjectReference Include="..\ModuleSteam\ModuleSteam.csproj" />
     <ProjectReference Include="..\Module\Module.csproj" />
   </ItemGroup>
   <ItemGroup>

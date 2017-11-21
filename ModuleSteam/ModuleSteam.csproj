@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonApiSerializer" Version="1.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="SteamWebAPI" Version="1.0.14.42195" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Module\Module.csproj" />
+  </ItemGroup>
+
+</Project>
