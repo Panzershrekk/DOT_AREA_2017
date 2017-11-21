@@ -10,6 +10,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj" />
-    <ProjectReference Include="..\GmailModule\GmailModule.csproj" />
+    <ProjectReference Include="..\LinkerModule\LinkerModule.csproj" />
+    <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />
   </ItemGroup>
 </Project>

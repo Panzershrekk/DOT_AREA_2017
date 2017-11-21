@@ -1,40 +1,44 @@
-﻿using System.Reflection.Metadata;
+﻿using System;
+using System.Reflection.Metadata;
+using JsonApiSerializer;
 using Microsoft.AspNetCore.Mvc;
+using Module;
+using Newtonsoft.Json;
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     public class GmailController : Controller
     {
-        private Module.GmailModule module { get; set; }
+        private ModuleGmail Module { get; set; }
 
         public GmailController()
         {
-            module = new Module.GmailModule();
+            Module = new ModuleGmail();
         }
 
         [HttpGet]
         public string Index()
         {
-            return module.GetRequest();
+            throw new NotImplementedException();
         }
 
         [HttpGet("getLabel")]
         public string GetLabel()
         {
-            return module.GetLabel();
+            return Module.GetLabel();
         }
 
         [HttpGet("getMessage")]
         public string GetMessage(string subject)
         {
-            return module.GetMessage(subject);
+            return Module.GetMessage(subject);
         }
 
         [HttpPost("send")]
         public string SendMessage(string dest, string subject, string body)
         {
-            return module.SendMessage(dest, subject, body);
+            return JsonConvert.SerializeObject(Module.SendMessage(dest, subject, body) ? "OK" : "Error", new JsonApiSerializerSettings());
         }
     }
 }
