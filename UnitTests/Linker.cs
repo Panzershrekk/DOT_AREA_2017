@@ -24,7 +24,8 @@ namespace UnitTests
         [Fact]
         public void LinkerMethodsTranslator()
         {
-            Assert.True(linker.ReactionsTranslation.ContainsKey("ReactionSendMessage"));
+            Assert.True(linker.ReactionsTranslation.ContainsKey(
+                "ReactionSendMessage"));
             Assert.True(linker.ReactionsTranslation.ContainsKey("ReactionTweet"));
         }
 
