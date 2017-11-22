@@ -4,44 +4,39 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Module;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ActionResult = Microsoft.AspNetCore.Mvc.ActionResult;
-using Controller = Microsoft.AspNetCore.Mvc.Controller;
 
 namespace Api.Controllers
 {
-    [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
+    [Route("api/[controller]")]
     public class DropboxController : Controller
     {
-        public DropboxController()
-        {
-        }
-
-        [Microsoft.AspNetCore.Mvc.HttpGet]
-        public string Index()
+        [HttpGet("folder")]
+        public string Folderlist()
         {
             return Area.Modules[typeof(ModuleDropbox)].DropboxGetFolderList();
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpGet("webhook")]
+        [HttpGet("webhook")]
         public ActionResult Dropbox(string challenge)
         {
             Console.WriteLine("webhook");
             return Content(challenge);
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpPost("webhook")]
+        [HttpPost("webhook")]
         public async Task<ActionResult> Dropbox()
         {
-            Microsoft.Extensions.Primitives.StringValues sig;
-            var signatureHeader = Request.Headers.TryGetValue("X-Dropbox-Signature", out sig);
+            Request.Headers.TryGetValue("X-Dropbox-Signature", out var sig);
             if (!sig.Any())
                 return Content("400 BadRequest");
             
             var signature = sig.FirstOrDefault();
-            string body = null;
+            string body;
             using (var reader = new StreamReader(Request.Body))
             {
                 body = await reader.ReadToEndAsync();

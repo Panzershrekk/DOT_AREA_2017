@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ArgentPonyWarcraftClient;
 
-namespace ModuleBattlenet
+namespace Module
 {
     class BattlenetStram
     {

@@ -13,8 +13,8 @@ namespace UnitTests
         {
             var module = new Module.ModuleBattlenet();
 
-            var response = module.GetRequest();
-            Assert.NotEqual(response, "Error");
+            var response = module.BattlenetGetPoints();
+            Assert.NotEqual(response, 0);
         }
     }
 }

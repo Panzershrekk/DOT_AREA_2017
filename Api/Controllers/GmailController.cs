@@ -8,19 +8,26 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class GmailController : Controller
     {
-        [HttpGet("getLabel")]
+        [HttpGet("label")]
         public string GetLabel()
         {
-            return Area.Modules[typeof(ModuleGmail)].GmailGetLabel();
+            var label = Area.Modules[typeof(ModuleGmail)].GmailGetLabel();
+            Area.Linker.ExecuteReactions("GmailGetLabel", Area.User, label);
+            return JsonConvert.SerializeObject(label,
+                new JsonApiSerializerSettings());
         }
 
-        [HttpGet("getMessage")]
+        [HttpGet("message")]
         public string GetMessage(string subject)
         {
-            return Area.Modules[typeof(ModuleGmail)].GmailGetMessage(subject);
+            var messages = Area.Modules[typeof(ModuleGmail)]
+                .GmailGetMessage(subject);
+            Area.Linker.ExecuteReactions("GmailGetMessage", Area.User, messages);
+            return JsonConvert.SerializeObject(messages,
+                new JsonApiSerializerSettings());
         }
 
-        [HttpPost("send")]
+        [HttpPost("message")]
         public string SendMessage(string dest, string subject, string body)
         {
             return JsonConvert.SerializeObject(Area.Modules[typeof(ModuleGmail)].GmailSendMessage(dest, subject, body) ? "OK" : "Error", new JsonApiSerializerSettings());

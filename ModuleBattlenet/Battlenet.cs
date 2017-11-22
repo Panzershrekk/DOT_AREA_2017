@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
-using BattleDotNet;
-using BattleDotNet.Objects.WoW;
-using BattleNetAPI;
+﻿using System.Threading.Tasks;
 using JsonApiSerializer;
-using Module;
 using Newtonsoft.Json;
 using ArgentPonyWarcraftClient;
 using Character = ArgentPonyWarcraftClient.Character;
@@ -17,15 +10,13 @@ namespace Module
 {
     public class ModuleBattlenet : AModule
     {
-        public string GetRequest()
+        public int BattlenetGetPoints()
         {
-            var response = GetInfo().Result.AchievementPoints;
-            if (response.Equals(""))
-                return ("Error");
-            return JsonConvert.SerializeObject(response, new JsonApiSerializerSettings());
+            var response = BattlenetGetInfo().Result.AchievementPoints;
+            return response;
         }
 
-        private async Task<Character> GetInfo()
+        private static async Task<Character> BattlenetGetInfo()
         {
             var warcraftClient = new WarcraftClient("g4bzbwkn3ejumdtbqunxm2eu8xs7mu4m", Region.Europe, "fr_Fr");
             var character = await warcraftClient.GetCharacterAsync("Culte de la Rive Noire", "Sundstrom", CharacterFields.All);

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using DAO;
-using JsonApiSerializer;
+﻿using JsonApiSerializer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Module;
 using Newtonsoft.Json;
@@ -11,31 +9,24 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class TwitterController : Controller
     {
-        public TwitterController()
+        [HttpGet("user")]
+        public string GetUsername()
         {
-            // if (!Area.Instance.Modules.ContainsKey(typeof(ModuleTwitter)))
-            //   throw new Exception("Cannot load module");
+            var username = Area.Modules[typeof(ModuleTwitter)].TwitterGetUsername();
+            Area.Linker.ExecuteReactions("TwitterGetUsername", Area.User, username);
+            return JsonConvert.SerializeObject(username, new JsonApiSerializerSettings());
         }
-
-        [HttpGet]
-        public string Index()
+        
+        [HttpPost("post")]
+        public string PostTwit(IFormCollection collection)
         {
-            return "OK";
-            //return Module.TwitterGetUsername();
-        }
-
-
-        [HttpPost("Post")]
-        public string Post(string Name)
-        {
-            var ret = new List<string>();
-            if (Area.Modules[typeof(ModuleTwitter)].TwitterPostRequest(Name))
-                ret.Add(JsonConvert.SerializeObject("OK", new JsonApiSerializerSettings()));
-            else
-                ret.Add(JsonConvert.SerializeObject("KO", new JsonApiSerializerSettings()));
-            ret.Add(
-                JsonConvert.SerializeObject(Area.Linker.ExecuteReactions("TwitterPostRequest", Area.User, Name)));
-            return JsonConvert.SerializeObject(ret, new JsonApiSerializerSettings());
+            if (!collection.ContainsKey("message"))
+                JsonConvert.SerializeObject("KO", new JsonApiSerializerSettings());
+            var message = collection["message"];
+            Area.Modules[typeof(ModuleTwitter)].TwitterPostRequest(message);
+            Area.Linker.ExecuteReactions("TwitterPostRequest",
+                Area.User, message);
+            return JsonConvert.SerializeObject("OK", new JsonApiSerializerSettings());
         }
     }
 }

@@ -6,7 +6,8 @@ using Google.Apis.Util.Store;
 using System; 
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO; 
+using System.IO;
+using System.Linq;
 using System.Net.Mail; 
 using System.Threading; 
 using JsonApiSerializer; 
@@ -43,7 +44,7 @@ namespace Module
             { 
                 Subject = subject, 
                 Body = body 
-            }) 
+            })
             {
                 smtp.Send(message); 
             }
@@ -52,21 +53,20 @@ namespace Module
  
         private static GmailService CreateService() 
         { 
-            UserCredential credential; 
+            UserCredential credential;
  
-            using (var stream = 
-                new FileStream("client_secret.json", FileMode.Open, FileAccess.Read)) 
-            { 
-                string credPath = Environment.GetFolderPath( 
-                    Environment.SpecialFolder.Personal); 
+            using (var stream =
+                new FileStream("client_secret.json", FileMode.Open, FileAccess.Read))
+            {
+                var credPath = Environment.GetFolderPath(
+                    Environment.SpecialFolder.Personal);
                 credPath = Path.Combine(credPath, ".credentials/gmail-dotnet-quickstart.json"); 
- 
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync( 
-                    GoogleClientSecrets.Load(stream).Secrets, 
-                    Scopes, 
-                    "user", 
+                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    GoogleClientSecrets.Load(stream).Secrets,
+                    Scopes,
+                    "user",
                     CancellationToken.None, 
-                    new FileDataStore(credPath, true)).Result; 
+                    new FileDataStore(credPath, true)).Result;
                 Console.WriteLine("Credential file saved to: " + credPath); 
             } 
  
@@ -78,11 +78,11 @@ namespace Module
             return service; 
         } 
  
-        public string GmailGetLabel() 
-        { 
+        public string GmailGetLabel()
+        {
             var labels = new List<string>(); 
             var response = MyService.Users.Labels.List("me").Execute(); 
-            if (response != null) 
+            if (response != null)
             { 
                 foreach (Label label in response.Labels) 
                 { 
@@ -98,50 +98,49 @@ namespace Module
             return JsonConvert.SerializeObject(labels, new JsonApiSerializerSettings()); 
         } 
  
-        public string GmailGetMessage(string query) 
+        public string GmailGetMessage(string query)
         { 
-            List<Message> result = new List<Message>(); 
-            UsersResource.MessagesResource.ListRequest request = MyService.Users.Messages.List("me"); 
-            request.Q = query; 
- 
-            do 
-            { 
-                try 
+            var result = new List<Message>(); 
+            var request = MyService.Users.Messages.List("me"); 
+            request.Q = query;
+            do
+            {
+                try
                 { 
-                    ListMessagesResponse res = request.Execute(); 
+                    var res = request.Execute(); 
                     result.AddRange(res.Messages); 
                     request.PageToken = res.NextPageToken; 
-                } 
-                catch (Exception e) 
-                { 
-                    Console.WriteLine("An error occurred: " + e.Message); 
-                } 
-            } while (!String.IsNullOrEmpty(request.PageToken)); 
- 
-            Console.WriteLine("MESSAGES:"); 
-            var i = 0; 
-            var msg = new List<string>(); 
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("An error occurred: " + e.Message);
+                    return "";
+                }
+            } while (!string.IsNullOrEmpty(request.PageToken)); 
+             
+            var i = 0;
+            var msg = "";
+            
             foreach (var r in result) 
             { 
-                if (i <= 5) 
+                if (i <= 5)
                 { 
-                    if (MyService.Users.Messages.Get("me", r.Id).Execute().LabelIds[0] == "UNREAD") 
-                    { 
-                        msg.Add("-- Mail --\r\n"); 
-                        msg.Add(MyService.Users.Messages.Get("me", r.Id).Execute().Snippet); 
-                    } 
-                    i++; 
+                    if (MyService.Users.Messages.Get("me", r.Id).Execute().LabelIds[0] == "UNREAD")
+                    {
+                        msg += "-- Mail --\r\n";
+                        msg += MyService.Users.Messages.Get("me", r.Id).Execute().Snippet;
+                        msg += "-- --\r\n";
+                    }
+                    i++;
                 } 
-                else 
-                    return JsonConvert.SerializeObject(msg, new JsonApiSerializerSettings()); 
- 
-            } 
-            return JsonConvert.SerializeObject("Empty.", new JsonApiSerializerSettings()); 
+                else
+                    return msg;
+            }
+            return msg;
         }
 
         public ReactionResult ReactionSendMessage(User user,string msg)
         {
-            Trace.WriteLine("*** ENVOIE UN EMAIL ****");
             var react = new ReactionResult();
             try
             {

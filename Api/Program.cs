@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Mime;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 

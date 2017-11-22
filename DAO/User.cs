@@ -1,5 +1,4 @@
-﻿using System.Net.Mail;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace DAO
 {

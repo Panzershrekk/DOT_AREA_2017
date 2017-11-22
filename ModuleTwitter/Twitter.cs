@@ -19,9 +19,7 @@ namespace Module
         public string TwitterGetUsername()
         {
             var user = User.GetAuthenticatedUser();
-            if (user.ScreenName.Equals(""))
-                return ("Error");
-            return JsonConvert.SerializeObject(user.ScreenName, new JsonApiSerializerSettings());
+            return user.ScreenName;
         }
 
         public bool TwitterPostRequest(string msg)
