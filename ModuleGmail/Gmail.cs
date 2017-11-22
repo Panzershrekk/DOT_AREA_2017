@@ -4,7 +4,8 @@ using Google.Apis.Gmail.v1.Data;
 using Google.Apis.Services; 
 using Google.Apis.Util.Store; 
 using System; 
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO; 
 using System.Net.Mail; 
 using System.Threading; 
@@ -21,7 +22,7 @@ namespace Module
         static string ApplicationName = "Gmail API .NET Quickstart";
         private static GmailService MyService = CreateService(); 
  
-        public bool SendMessage(string dest, string sub, string text) 
+        public bool GmailSendMessage(string dest, string sub, string text) 
         { 
             var fromAddress = new MailAddress("grattepanche.robin@gmail.com", "From Robin"); 
             var toAddress = new MailAddress(dest, "To" + dest); 
@@ -49,7 +50,7 @@ namespace Module
             return true;
         } 
  
-        static GmailService CreateService() 
+        private static GmailService CreateService() 
         { 
             UserCredential credential; 
  
@@ -77,7 +78,7 @@ namespace Module
             return service; 
         } 
  
-        public string GetLabel() 
+        public string GmailGetLabel() 
         { 
             var labels = new List<string>(); 
             var response = MyService.Users.Labels.List("me").Execute(); 
@@ -97,7 +98,7 @@ namespace Module
             return JsonConvert.SerializeObject(labels, new JsonApiSerializerSettings()); 
         } 
  
-        public string GetMessage(string query) 
+        public string GmailGetMessage(string query) 
         { 
             List<Message> result = new List<Message>(); 
             UsersResource.MessagesResource.ListRequest request = MyService.Users.Messages.List("me"); 
@@ -140,10 +141,11 @@ namespace Module
 
         public ReactionResult ReactionSendMessage(User user,string msg)
         {
+            Trace.WriteLine("*** ENVOIE UN EMAIL ****");
             var react = new ReactionResult();
             try
             {
-                SendMessage(user.Email, "Notification: New event on AREA.NET project", msg);
+                GmailSendMessage(user.Email, "Notification: New event on AREA.NET project", msg);
                 react.Type = ReactionStatus.Ok;
             }
             catch (Exception e)

@@ -11,7 +11,7 @@ namespace UnitTests
         public void TestSendMessage()
         {
             module = new ModuleGmail();
-            var test = module.SendMessage("grattepanche.robin@gmail.com", "test", "hello world!");
+            var test = module.GmailSendMessage("grattepanche.robin@gmail.com", "test", "hello world!");
             Assert.Equal(test, true);
         }
     }

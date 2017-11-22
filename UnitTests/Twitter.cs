@@ -6,24 +6,24 @@ using Xunit;
 
 namespace UnitTests
 {
-    public class TwitterTest
+    public class Twitter
     {
         [Fact]
         public void TwitterPostWhenError()
         {
             var module = new ModuleTwitter();
-            string test = "";
-            var response = module.PostRequest(test);
-            Assert.Equal(response, "Error");
+            const string test = "";
+            var response = module.TwitterPostRequest(test);
+            Assert.Equal(response, false);
         }
 
         [Fact]
         public void TwitterPostWhenNoError()
         {
             var module = new ModuleTwitter();
-            string test = "test";
-            var response = module.PostRequest(test);
-            Assert.NotEqual(response, "Error");
+            const string test = "test";
+            var response = module.TwitterPostRequest(test);
+            Assert.NotEqual(response, false);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace UnitTests
         {
             var module = new ModuleTwitter();
 
-            var response = module.GetUsername();
+            var response = module.TwitterGetUsername();
             Assert.NotEqual(response, "Error");
         }
     }

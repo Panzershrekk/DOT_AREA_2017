@@ -13,19 +13,16 @@ using Controller = Microsoft.AspNetCore.Mvc.Controller;
 namespace Api.Controllers
 {
     [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
-    public class DropBoxController : Controller
+    public class DropboxController : Controller
     {
-        private DropBox Module { get; set; }
-
-        public DropBoxController()
+        public DropboxController()
         {
-            Module = new Module.DropBox();
         }
 
         [Microsoft.AspNetCore.Mvc.HttpGet]
         public string Index()
         {
-            return Module.GetFolderList();
+            return Area.Modules[typeof(ModuleDropbox)].DropboxGetFolderList();
         }
 
         [Microsoft.AspNetCore.Mvc.HttpGet("webhook")]
@@ -49,15 +46,15 @@ namespace Api.Controllers
             {
                 body = await reader.ReadToEndAsync();
             }
-            var appSecret = "4fa52tui944xzpx";
+            const string appSecret = "4fa52tui944xzpx";
             using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(appSecret)))
             {
-                if (!DropBox.VerifySha256Hash(hmac, body, signature))
+                if (!ModuleDropbox.VerifySha256Hash(hmac, body, signature))
                     return Content("400 Bad Request");
             }
             var decoded = JsonConvert.DeserializeObject<JObject>(body, new JsonSerializerSettings());
             var account = decoded["list_folder"]["accounts"].Last.ToString();
-            var name = Module.GetNameAccount(account);
+            var name = Area.Modules[typeof(ModuleDropbox)].DropboxGetNameAccount(account);
             Console.WriteLine("Modification dropbox on the " + name + " account");
             return Content("200 OK");
         }

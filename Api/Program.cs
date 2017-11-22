@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Net.Mime;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Api
 {
     public class Program
-    {
+    {   
         public static Area Area { get; set; }
 
         static Program()
@@ -17,7 +18,6 @@ namespace Api
         {
             try
             {
-                Area.Init();
                 BuildWebHost(args).Run();
             }
             catch (Exception e)

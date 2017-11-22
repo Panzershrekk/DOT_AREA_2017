@@ -7,11 +7,9 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class FacebookController : Controller
     {
-        private ModuleFacebook module { get; set; }
 
         public FacebookController()
         {
-            module = new ModuleFacebook();
         }
         
         [HttpGet]
