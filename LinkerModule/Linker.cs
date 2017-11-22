@@ -12,30 +12,20 @@ namespace LinkerModule
 {   
     public class Linker
     {
-        public Dictionary<Type, dynamic> Modules { get; set; }
+        public Dictionary<Type, dynamic> Modules;
         public Dictionary<string, Delegate> ReactionsTranslation { get; set; }
-        public Dictionary<string, Type> TypeTranslDictionary { get; set; }
         public Dictionary<string, string> Links { get; set; }
         public delegate ReactionResult ReactDelegate(User user, string msg);
 
         /**
          * Initialization
          */
-        public Linker()
+        public Linker(Dictionary<Type, dynamic> modules)
         {
-            InitializeModule();
+            Modules = modules;
+            
             InitializeReactions();
             Links = new Dictionary<string, string>();
-        }
-        
-        private void InitializeModule()
-        {
-            Modules = new Dictionary<Type, dynamic>
-            {
-                {typeof(ModuleFacebook), new ModuleFacebook()},
-                {typeof(ModuleTwitter), new ModuleTwitter()},
-                {typeof(ModuleGmail), new ModuleGmail()}
-            };
         }
         
         private void InitializeReactions()
@@ -46,7 +36,7 @@ namespace LinkerModule
                 var t = module.Key;
                 var methods = t.GetMethods(BindingFlags.Public | BindingFlags.Instance);
                 foreach (var method in methods)
-                {   
+                {
                     if (!method.Name.StartsWith("Reaction")) continue;
                     var deleg = (ReactDelegate) method.CreateDelegate(typeof(ReactDelegate), module.Value);
                     if (deleg == null) continue;
@@ -65,8 +55,8 @@ namespace LinkerModule
             
             foreach (var moduleIt in Modules)
             {
-                var module = moduleIt.Value;
-                var methods = typeof(AModule).GetMethods(BindingFlags.Public | BindingFlags.Instance);
+                Type typeModule = moduleIt.Key;
+                var methods = typeModule.GetMethods(BindingFlags.Public | BindingFlags.Instance);
                 foreach (var method in methods)
                 {
                     actionFound = actionFound || method.Name.Equals(action);
@@ -81,17 +71,26 @@ namespace LinkerModule
 
         private IEnumerable<string> GetReactList(string action)
         {
-            return (from pair in Links where pair.Key == action select pair.Value).ToList();
+            var list = new List<string>();
+            foreach (var link in Links)
+            {
+                if (link.Key == action)
+                    list.Add(link.Value);
+            }
+            return list;
         }
 
-        public List<ReactionResult> ExecuteReactions(string action, string message)
+        public List<ReactionResult> ExecuteReactions(string action, User user, string message)
         {
             var reactions = GetReactList(action);
             var results = new List<ReactionResult>();
             
             foreach (var reaction in reactions)
             {
-                var ret = ReactionsTranslation[action].DynamicInvoke();
+                if (!ReactionsTranslation.ContainsKey(reaction))
+                    throw new Exception("Invalid reaction was called");
+                var del = ReactionsTranslation[reaction];
+                var ret = del.DynamicInvoke(user, message);
                 results.Add((ReactionResult) ret);
             }
             return results;

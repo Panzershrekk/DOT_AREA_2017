@@ -10,16 +10,9 @@ using Newtonsoft.Json;
 
 namespace Module
 {
-    public class DropBox : AModule
+    public class ModuleDropbox : AModule
     {
         private readonly DropboxClient dbx = new DropboxClient("KuxKIuxdEAAAAAAAAAAAMhspYWaGX1xEky3hVlRVkjuxz2PqqQvwPkLDPiCkY2oV");
-
-        public string GetFolderList()
-        {
-            var list = dbx.Files.ListFolderAsync(string.Empty, true);
-            return JsonConvert.SerializeObject(list,
-                new JsonApiSerializerSettings());
-        }
 
         private static string GetSha256Hash(HMACSHA256 sha256Hash, string input)
         {
@@ -40,8 +33,15 @@ namespace Module
 
             return String.Compare(hashOfInput, hash, StringComparison.OrdinalIgnoreCase) == 0;
         }
+        
+        public string DropboxGetFolderList()
+        {
+            var list = dbx.Files.ListFolderAsync(string.Empty, true);
+            return JsonConvert.SerializeObject(list,
+                new JsonApiSerializerSettings());
+        }
 
-        public string GetNameAccount(string acc)
+        public string DropboxGetNameAccount(string acc)
         {
             var ret = dbx.Users.GetAccountAsync(acc);
             return ret.Result.Name.DisplayName;
