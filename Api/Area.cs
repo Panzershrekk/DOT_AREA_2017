@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DAO;
 using LinkerModule;
 using Module;
+using ModuleBattlenet = Module.ModuleBattlenet;
 
 namespace Api
 {
@@ -44,6 +45,7 @@ namespace Api
                 {typeof(ModuleDropbox), new ModuleDropbox()},
                 {typeof(ModuleGmail), new ModuleGmail()},
                 {typeof(ModuleSteam), new ModuleSteam()},
+                {typeof(ModuleBattlenet), new ModuleBattlenet()},
             };
         }
         

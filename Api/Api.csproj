@@ -21,6 +21,7 @@
     <ProjectReference Include="..\DAO\DAO.csproj" />
     <ProjectReference Include="..\LinkerModule\LinkerModule.csproj" />
     <ProjectReference Include="..\ModuleDropBox\ModuleDropBox.csproj" />
+    <ProjectReference Include="..\ModuleBattlenet\ModuleBattlenet.csproj" />
     <ProjectReference Include="..\ModuleFacebook\ModuleFacebook.csproj" />
     <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />
     <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />

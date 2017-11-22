@@ -10,12 +10,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleFacebook", "ModuleFacebook\ModuleFacebook.csproj", "{CDF156D7-643F-4EBA-A32C-11342DEEA7DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAO", "DAO\DAO.csproj", "{E5257B2C-56AB-4211-A224-24CB559B7C81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleTwitter", "ModuleTwitter\ModuleTwitter.csproj", "{3E623035-9833-4028-882C-878BFF458DCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Properties", "Properties\Properties.csproj", "{4B76AFBE-8EF5-4A4D-8D82-35FF86EF0015}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAO", "DAO\DAO.csproj", "{E5257B2C-56AB-4211-A224-24CB559B7C81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{3AC3A639-6898-48A2-A359-E0BE28CE2B13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Properties", "Properties\Properties.csproj", "{4B76AFBE-8EF5-4A4D-8D82-35FF86EF0015}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{3AC3A639-6898-48A2-A359-E0BE28CE2B13}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkerModule", "LinkerModule\LinkerModule.csproj", "{C83965AD-8401-4F4B-AC94-B884DDCD56C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GmailModule", "GmailModule\GmailModule.csproj", "{B9780890-DFAD-4E79-A02E-F44EA08B6722}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTwitter", "ModuleTwitter\ModuleTwitter.csproj", "{5571D5F2-DF2A-44A9-BB10-450ED5259177}"
 EndProject
@@ -24,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleDropBox", "ModuleDropBox\ModuleDropBox.csproj", "{7CBA147B-1513-4D71-8F23-1BE5BB194421}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleSteam", "ModuleSteam\ModuleSteam.csproj", "{3BE8F2B1-EF33-4E4E-8312-D6426D71458D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleBattlenet", "ModuleBattlenet\ModuleBattlenet.csproj", "{50E8CFD1-2412-43DF-B7B4-D7F006DA3F98}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +81,14 @@ Global
 		{7CBA147B-1513-4D71-8F23-1BE5BB194421}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CBA147B-1513-4D71-8F23-1BE5BB194421}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CBA147B-1513-4D71-8F23-1BE5BB194421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9780890-DFAD-4E79-A02E-F44EA08B6722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9780890-DFAD-4E79-A02E-F44EA08B6722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9780890-DFAD-4E79-A02E-F44EA08B6722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9780890-DFAD-4E79-A02E-F44EA08B6722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E8CFD1-2412-43DF-B7B4-D7F006DA3F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E8CFD1-2412-43DF-B7B4-D7F006DA3F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E8CFD1-2412-43DF-B7B4-D7F006DA3F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E8CFD1-2412-43DF-B7B4-D7F006DA3F98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
