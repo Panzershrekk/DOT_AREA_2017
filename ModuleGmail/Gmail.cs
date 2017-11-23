@@ -98,45 +98,32 @@ namespace Module
             return JsonConvert.SerializeObject(labels, new JsonApiSerializerSettings()); 
         } 
  
-        public string GmailGetMessage(string query)
-        { 
+        public IList<string> GmailGetMessage(int nb = 1)
+        {
             var result = new List<Message>(); 
             var request = MyService.Users.Messages.List("me"); 
-            request.Q = query;
+            request.Q = "";
             do
             {
-                try
-                { 
-                    var res = request.Execute(); 
-                    result.AddRange(res.Messages); 
-                    request.PageToken = res.NextPageToken; 
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("An error occurred: " + e.Message);
-                    return "";
-                }
+                var res = request.Execute();
+                result.AddRange(res.Messages); 
+                request.PageToken = res.NextPageToken; 
             } while (!string.IsNullOrEmpty(request.PageToken)); 
              
             var i = 0;
-            var msg = "";
-            
+            var message = new List<string>();
             foreach (var r in result) 
-            { 
-                if (i <= 5)
-                { 
-                    if (MyService.Users.Messages.Get("me", r.Id).Execute().LabelIds[0] == "UNREAD")
-                    {
-                        msg += "-- Mail --\r\n";
-                        msg += MyService.Users.Messages.Get("me", r.Id).Execute().Snippet;
-                        msg += "-- --\r\n";
-                    }
+            {
+                if (i <= nb)
+                {
+                    message.Add(MyService.Users.Messages.Get("me", r.Id)
+                        .Execute().Snippet);
                     i++;
                 } 
                 else
-                    return msg;
+                    return message;
             }
-            return msg;
+            return message;
         }
 
         public ReactionResult ReactionSendMessage(User user,string msg)
