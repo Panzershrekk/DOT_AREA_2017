@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Module;
 
 namespace Api.Controllers
@@ -9,6 +10,8 @@ namespace Api.Controllers
         [HttpGet("friends")]
         public string GetFriendList()
         {
+            if (!Area.Modules.ContainsKey(typeof(ModuleSteam)))
+                throw new Exception("Cannot load the Steam module");
             var friendList = Area.Modules[typeof(ModuleSteam)].SteamGetFriendList();
             Area.Linker.ExecuteReactions("SteamGetFriendList", Area.User,
                 friendList);
