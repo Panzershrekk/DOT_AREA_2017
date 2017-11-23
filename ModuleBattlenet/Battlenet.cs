@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using JsonApiSerializer;
-using Newtonsoft.Json;
 using ArgentPonyWarcraftClient;
 using Character = ArgentPonyWarcraftClient.Character;
 using CharacterFields = ArgentPonyWarcraftClient.CharacterFields;
