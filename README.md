@@ -4,6 +4,10 @@
 EPITECH Project (3rd year) in .NET Programing module : Interface that allow you to automatise you e-life.
 IFTT like.
 
+## Documentation
+### Api
+https://areanet.docs.apiary.io/
+
 ## Conventions
 
 ### Modules of the project
