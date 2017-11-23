@@ -19,6 +19,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj" />
+    <ProjectReference Include="..\HttpResponse\HttpResponse.csproj" />
     <ProjectReference Include="..\LinkerModule\LinkerModule.csproj" />
     <ProjectReference Include="..\ModuleDropBox\ModuleDropBox.csproj" />
     <ProjectReference Include="..\ModuleFacebook\ModuleFacebook.csproj" />
