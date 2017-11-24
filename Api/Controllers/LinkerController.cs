@@ -3,6 +3,7 @@ using LinkerModule;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using HttpRequest = HttpResponse.HttpRequest;
 
 namespace Api.Controllers
 {
@@ -19,25 +20,45 @@ namespace Api.Controllers
         [HttpPost]
         public string MakeLink(IFormCollection collection)
         {
-            if (!collection.ContainsKey("act") || !collection.ContainsKey("react"))
-                return JsonConvert.SerializeObject("KO",
-                    new JsonApiSerializerSettings());
+            var response = new HttpResponse.HttpRequest();
+            if (!collection.ContainsKey("act") ||
+                !collection.ContainsKey("react"))
+            {
+                response.Message =
+                    "Your request must provide act / react fields";
+                return response.ToJson();
+            }
             var act = collection["act"];
             var react = collection["react"];
-            return JsonConvert.SerializeObject((Linker.AddLink(act, react) ? "OK" : "KO"),
-                new JsonApiSerializerSettings());
+            if (!Linker.AddLink(act, react))
+            {
+                response.Message = "Invalid link has been asked";
+                return response.ToJson();
+            }
+            response.Status = "OK";
+            return response.ToJson();
         }
 
         [HttpDelete]
         public string DeleteLink(IFormCollection collection)
         {
-            if (!collection.ContainsKey("act") || !collection.ContainsKey("react"))
-                return JsonConvert.SerializeObject("KO",
-                    new JsonApiSerializerSettings());
+            var response = new HttpResponse.HttpRequest();
+            if (!collection.ContainsKey("act") ||
+                !collection.ContainsKey("react"))
+            {
+                response.Message =
+                    "Your request must provide act / react fields";
+                return response.ToJson();
+            }
             var act = collection["act"];
             var react = collection["react"];
-            return JsonConvert.SerializeObject((Linker.DeleteLink(act, react) ? "OK" : "KO"),
-                new JsonApiSerializerSettings());
+            if (!Linker.DeleteLink(act, react))
+            {
+                response.Message = "Invalid link has been asked to be delete";
+                return response.ToJson();
+            }
+            response.Status = "OK";
+            return response.ToJson();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace HttpResponse
         public HttpRequest()
         {
             this.Status = "KO";
-            this.Message = "Message returned not defined";
+            this.Message = "";
         }
 
         public void ChangeResponse(string nStatus, string nMessage)

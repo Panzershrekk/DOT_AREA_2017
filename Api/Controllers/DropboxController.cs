@@ -35,10 +35,14 @@ namespace Api.Controllers
         [HttpPost("webhook")]
         public async Task<string> Dropbox()
         {
-            Console.WriteLine("POST Webhook");
             Request.Headers.TryGetValue("X-Dropbox-Signature", out var sig);
             if (!sig.Any())
-                return "400 BadRequest";
+            {
+                var response =
+                    new HttpResponse.HttpRequest("KO",
+                        "Invalid dropbox signature");
+                return response.ToJson();
+            }
             
             var signature = sig.FirstOrDefault();
             string body;
@@ -50,7 +54,12 @@ namespace Api.Controllers
             using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(appSecret)))
             {
                 if (!ModuleDropbox.VerifySha256Hash(hmac, body, signature))
-                    return "400 Bad Request";
+                {
+                    var response =
+                        new HttpResponse.HttpRequest("KO",
+                            "Invalid Hash key");
+                    return response.ToJson();                    
+                }
             }
             var decoded = JsonConvert.DeserializeObject<JObject>(body, new JsonSerializerSettings());
             var account = decoded["list_folder"]["accounts"].Last.ToString();

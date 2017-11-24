@@ -20,13 +20,18 @@ namespace Api.Controllers
         [HttpPost("post")]
         public string PostTwit(IFormCollection collection)
         {
+            var response = new HttpResponse.HttpRequest();
             if (!collection.ContainsKey("message"))
-                JsonConvert.SerializeObject("KO", new JsonApiSerializerSettings());
+            {
+                response.Message = "The request must provide a message field";
+                return response.ToJson();
+            }
             var message = collection["message"];
             Area.Modules[typeof(ModuleTwitter)].TwitterPostRequest(message);
             Area.Linker.ExecuteReactions("TwitterPostRequest",
                 Area.User, message);
-            return JsonConvert.SerializeObject("OK", new JsonApiSerializerSettings());
+            response.Status = "OK";
+            return response.ToJson();
         }
     }
 }

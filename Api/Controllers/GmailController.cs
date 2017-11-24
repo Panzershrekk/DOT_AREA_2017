@@ -32,24 +32,38 @@ namespace Api.Controllers
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine(e);
+                var response =
+                    new HttpResponse.HttpRequest("KO",
+                        e.Message);
+                return response.ToJson();
             }
-            return "ERROR";
         }
 
         [HttpPost("message")]
         public string SendMessage(IFormCollection collection)
         {
+            var response = new HttpResponse.HttpRequest();
             if (!collection.ContainsKey("dest") ||
                 !collection.ContainsKey("subject") ||
                 !collection.ContainsKey("body"))
             {
-                return "ERROR";
+                response.Message = "Your request must be param by a dest/subject/body";
+                return response.ToJson();
             }
             var dest = collection["dest"];
             var subject = collection["subject"];
             var body = collection["body"];
-            return JsonConvert.SerializeObject(Area.Modules[typeof(ModuleGmail)].GmailSendMessage(dest, subject, body) ? "OK" : "Error", new JsonApiSerializerSettings());
+
+            if (!Area.Modules[typeof(ModuleGmail)]
+                .GmailSendMessage(dest, subject, body))
+            {
+                response.Message =
+                    "An error has been reached when try to send the message, " +
+                    "please try later";
+                return response.ToJson();
+            }
+            response.Status = "OK";
+            return response.ToJson();
         }
     }
 }
