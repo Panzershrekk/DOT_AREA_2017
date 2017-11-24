@@ -1,11 +1,11 @@
 ﻿using System;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PortableSteam;
 
-namespace Module
+namespace Api
 {
     public class SteamStream
     {
@@ -18,11 +18,17 @@ namespace Module
 
         private static void CompareFriendList()
         {
-            var oldFriendList = SteamWebAPI.General().ISteamUser().GetFriendList(SteamIdentity.FromSteamID(76561198062399869), RelationshipType.All).GetResponseString();
+            var oldFriendList = SteamWebAPI.General().
+                ISteamUser().
+                GetFriendList(SteamIdentity.FromSteamID(76561198062399869), RelationshipType.All).
+                GetResponseString();
             while (true)
             {
                 Thread.Sleep(1000);
-                var newFriendList = SteamWebAPI.General().ISteamUser().GetFriendList(SteamIdentity.FromSteamID(76561198062399869), RelationshipType.All).GetResponseString();
+                var newFriendList = SteamWebAPI.General()
+                    .ISteamUser()
+                    .GetFriendList(SteamIdentity.FromSteamID(76561198062399869), RelationshipType.All)
+                    .GetResponseString();
                 if (oldFriendList.Equals(newFriendList)) continue;
                 CheckDifference(newFriendList, oldFriendList);
                 oldFriendList = newFriendList;
@@ -73,6 +79,5 @@ namespace Module
                 Console.WriteLine("Objects are same");
             }
         }
-
     }
 }

@@ -27,5 +27,17 @@ namespace Api.Controllers
             return JsonConvert.SerializeObject((Linker.AddLink(act, react) ? "OK" : "KO"),
                 new JsonApiSerializerSettings());
         }
+
+        [HttpDelete]
+        public string DeleteLink(IFormCollection collection)
+        {
+            if (!collection.ContainsKey("act") || !collection.ContainsKey("react"))
+                return JsonConvert.SerializeObject("KO",
+                    new JsonApiSerializerSettings());
+            var act = collection["act"];
+            var react = collection["react"];
+            return JsonConvert.SerializeObject((Linker.DeleteLink(act, react) ? "OK" : "KO"),
+                new JsonApiSerializerSettings());
+        }
     }
 }

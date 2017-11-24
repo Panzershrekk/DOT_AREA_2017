@@ -18,18 +18,9 @@
     <None Include="client_secret.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Area\Area.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
     <ProjectReference Include="..\LinkerModule\LinkerModule.csproj" />
-    <ProjectReference Include="..\ModuleDropBox\ModuleDropBox.csproj" />
-    <ProjectReference Include="..\ModuleBattlenet\ModuleBattlenet.csproj" />
-    <ProjectReference Include="..\ModuleFacebook\ModuleFacebook.csproj" />
-    <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />
-    <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />
-    <ProjectReference Include="..\ModuleSteam\ModuleSteam.csproj" />
-    <ProjectReference Include="..\ModuleTwitter\ModuleTwitter.csproj" />
-    <ProjectReference Include="..\ModuleSteam\ModuleSteam.csproj" />
-    <ProjectReference Include="..\ModuleTwitter\ModuleTwitter.csproj" />
-    <ProjectReference Include="..\Module\Module.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\README.md">

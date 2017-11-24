@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System;
+using MySql.Data.MySqlClient;
 
 namespace DAO
 {
@@ -43,6 +44,7 @@ namespace DAO
                 Port = Port,
                 Basename = Database,
                 Username = Username,
+                Password = Password,
                 Connection = connection
             };
             
