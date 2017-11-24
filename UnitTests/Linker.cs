@@ -61,7 +61,7 @@ namespace UnitTests
         [Fact]
         public void LinkActionReaction()
         {
-            Assert.True(Linker.AddLink("TaskTweetReceived", "ReactionSendMessage"));
+            Assert.True(Linker.AddLink("TwitterPostRequest", "ReactionSendMessage"));
         }
 
         [Fact]
