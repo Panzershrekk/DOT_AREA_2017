@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleDropbox", "ModuleDrop
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleSteam", "ModuleSteam\ModuleSteam.csproj", "{92E1DF68-2F7B-4A6A-9972-BE5D679E286A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResponse", "HttpResponse\HttpResponse.csproj", "{5B55B7FF-4515-4054-AA56-D9B2B325F2EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResponse", "HttpResponse\HttpResponse.csproj", "{799245C2-FE95-48D3-98B2-3A6600FEE603}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +93,10 @@ Global
 		{92E1DF68-2F7B-4A6A-9972-BE5D679E286A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92E1DF68-2F7B-4A6A-9972-BE5D679E286A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92E1DF68-2F7B-4A6A-9972-BE5D679E286A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{799245C2-FE95-48D3-98B2-3A6600FEE603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799245C2-FE95-48D3-98B2-3A6600FEE603}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799245C2-FE95-48D3-98B2-3A6600FEE603}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799245C2-FE95-48D3-98B2-3A6600FEE603}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
