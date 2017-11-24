@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using JsonApiSerializer;
 using Microsoft.AspNetCore.Mvc;
 using Module;
 using Newtonsoft.Json;
@@ -18,22 +19,26 @@ namespace Api.Controllers
         [HttpGet("folder")]
         public string Folderlist()
         {
-            return Area.Modules[typeof(ModuleDropbox)].DropboxGetFolderList();
+            var folderList = Area.Modules[typeof(ModuleDropbox)].DropboxGetFolderList();
+            var jsonFolderList = JsonConvert.SerializeObject(folderList,
+                new JsonApiSerializerSettings());
+            Area.Linker.ExecuteReactions("DropboxGetFolderList", Area.User, jsonFolderList);
+            return jsonFolderList;
         }
 
         [HttpGet("webhook")]
         public ActionResult Dropbox(string challenge)
         {
-            Console.WriteLine("webhook");
             return Content(challenge);
         }
 
         [HttpPost("webhook")]
-        public async Task<ActionResult> Dropbox()
+        public async Task<string> Dropbox()
         {
+            Console.WriteLine("POST Webhook");
             Request.Headers.TryGetValue("X-Dropbox-Signature", out var sig);
             if (!sig.Any())
-                return Content("400 BadRequest");
+                return "400 BadRequest";
             
             var signature = sig.FirstOrDefault();
             string body;
@@ -45,13 +50,18 @@ namespace Api.Controllers
             using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(appSecret)))
             {
                 if (!ModuleDropbox.VerifySha256Hash(hmac, body, signature))
-                    return Content("400 Bad Request");
+                    return "400 Bad Request";
             }
             var decoded = JsonConvert.DeserializeObject<JObject>(body, new JsonSerializerSettings());
             var account = decoded["list_folder"]["accounts"].Last.ToString();
-            var name = Area.Modules[typeof(ModuleDropbox)].DropboxGetNameAccount(account);
-            Console.WriteLine("Modification dropbox on the " + name + " account");
-            return Content("200 OK");
+            var names = Area.Modules[typeof(ModuleDropbox)].DropboxGetNameAccount(account);
+            var json =
+                JsonConvert.SerializeObject(names,
+                    new JsonApiSerializerSettings());
+            Area.Linker.ExecuteReactions("DropboxGetNameAccount", Area.User,
+                json);
+            Console.WriteLine(json);
+            return json;
         }
     }
 }

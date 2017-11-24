@@ -5,18 +5,14 @@ using Microsoft.AspNetCore.Hosting;
 namespace Api
 {
     public class Program
-    {   
+    {
         public static Area Area { get; set; }
 
-        static Program()
-        {
-            Area = new Area();
-        }
-        
         public static void Main(string[] args)
         {
             try
             {
+                Area = new Area();
                 BuildWebHost(args).Run();
             }
             catch (Exception e)

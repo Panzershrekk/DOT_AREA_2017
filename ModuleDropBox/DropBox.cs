@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Dropbox.Api;
 using Dropbox.Api.Files;
 using JsonApiSerializer;
-using Module;
 using Newtonsoft.Json;
 
 namespace Module
@@ -34,11 +33,9 @@ namespace Module
             return String.Compare(hashOfInput, hash, StringComparison.OrdinalIgnoreCase) == 0;
         }
         
-        public string DropboxGetFolderList()
+        public Task<ListFolderResult> DropboxGetFolderList()
         {
-            var list = dbx.Files.ListFolderAsync(string.Empty, true);
-            return JsonConvert.SerializeObject(list,
-                new JsonApiSerializerSettings());
+            return dbx.Files.ListFolderAsync(string.Empty, true);
         }
 
         public string DropboxGetNameAccount(string acc)

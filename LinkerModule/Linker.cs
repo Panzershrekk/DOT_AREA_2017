@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using DAO;
+using JsonApiSerializer.JsonApi;
 using Module;
 
 namespace LinkerModule
@@ -61,7 +62,31 @@ namespace LinkerModule
             }
             if (!actionFound || !reactionFound)
                 return false;
-            Links.Add(action, reaction);
+            try
+            {
+                Links.Add(action, reaction);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool DeleteLink(string action, string reaction)
+        {
+            try
+            {
+                if (action == null || reaction == null)
+                    return false;
+                if (!Links.ContainsKey(action) || Links[action] != reaction)
+                    return false;
+                Links.Remove(action);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return true;
         }
 

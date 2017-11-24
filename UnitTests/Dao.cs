@@ -18,11 +18,11 @@ namespace UnitTests
             File.Delete(filePath);
             using (var outputFile = new StreamWriter(filePath, true))
             {
-                outputFile.WriteLine("ip=localhost");
+                outputFile.WriteLine("ip=51.254.143.232");
                 outputFile.WriteLine("port=3306");
                 outputFile.WriteLine("database=areadotnet");
                 outputFile.WriteLine("username=areadotnet");
-                outputFile.WriteLine("password=areadotnet");
+                outputFile.WriteLine("password=DKRWUQC1npyZ9OWM");
             }
             DaoFactory = new DaoFactory(filePath);
             Database = DaoFactory.GetInstance();

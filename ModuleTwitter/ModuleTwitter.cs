@@ -1,8 +1,5 @@
-﻿using JsonApiSerializer;
-using Newtonsoft.Json;
-using Tweetinvi;
+﻿using Tweetinvi;
 using System;
-using System.Security.Cryptography;
 
 namespace Module
 {
@@ -10,7 +7,10 @@ namespace Module
     {
         public ModuleTwitter()
         {
-            Auth.SetUserCredentials("hAVBTJykgQyF6bkxsSNmTs7mj", "dnr2QSlGlq5dyiecgZqLDBdtqYpfXN7a5MCwH9AkgYAozgrBJ6", "922446818033664001-wwrq7uhrWDJGdrWONt9W1n9208KrSER", "4Yx5KgWPmgpzWQ2AEzN58bykrmPiMrZr9TSoYuKSH28hP");
+            Auth.SetUserCredentials("hAVBTJykgQyF6bkxsSNmTs7mj",
+                "dnr2QSlGlq5dyiecgZqLDBdtqYpfXN7a5MCwH9AkgYAozgrBJ6",
+                "922446818033664001-wwrq7uhrWDJGdrWONt9W1n9208KrSER",
+                "4Yx5KgWPmgpzWQ2AEzN58bykrmPiMrZr9TSoYuKSH28hP");
         }
 
         /**
@@ -29,22 +29,7 @@ namespace Module
             Tweet.PublishTweet(msg);
             return true;
         }
-        
-        public void TaskTweetReceived()
-        {
-            Auth.SetUserCredentials("hAVBTJykgQyF6bkxsSNmTs7mj",
-                "dnr2QSlGlq5dyiecgZqLDBdtqYpfXN7a5MCwH9AkgYAozgrBJ6",
-                "922446818033664001-wwrq7uhrWDJGdrWONt9W1n9208KrSER",
-                "4Yx5KgWPmgpzWQ2AEzN58bykrmPiMrZr9TSoYuKSH28hP");
 
-            var stream = Stream.CreateUserStream();
-            stream.TweetCreatedByMe += (sender, args) =>
-            {
-                
-            };
-            stream.StartStreamAsync();
-        }
-        
         /**
          * Reactions
          */
@@ -63,5 +48,6 @@ namespace Module
             }
             return result;
         }
+
     }
 }

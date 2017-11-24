@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj" />
+    <ProjectReference Include="..\LinkerModule\LinkerModule.csproj" />
+    <ProjectReference Include="..\ModuleBattlenet\ModuleBattlenet.csproj" />
+    <ProjectReference Include="..\ModuleDropbox\ModuleDropbox.csproj">
+      <Project>{8A3B2D7D-6570-4C24-BFA5-8B9BDA09C6A9}</Project>
+      <Name>ModuleDropbox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModuleSteam\ModuleSteam.csproj">
+      <Project>{92E1DF68-2F7B-4A6A-9972-BE5D679E286A}</Project>
+      <Name>ModuleSteam</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
