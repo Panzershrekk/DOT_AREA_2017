@@ -4,6 +4,10 @@ namespace Module
 {
     public class ModuleSteam : AModule
     {
+        public void SteamHandleNewFriend()
+        {
+        }
+        
         public string SteamGetFriendList()
         {
             SteamWebAPI.SetGlobalKey("535AB6031548709DFEEB34CABB80601E");
