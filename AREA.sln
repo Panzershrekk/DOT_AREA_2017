@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{03228444-4651-4D78-8B43-14CDFAA76608}"
 EndProject
@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Properties", "Properties\Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{3AC3A639-6898-48A2-A359-E0BE28CE2B13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkerModule", "LinkerModule\LinkerModule.csproj", "{C83965AD-8401-4F4B-AC94-B884DDCD56C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkerModule", "LinkerModule\LinkerModule.csproj", "{C83965AD-8401-4F4B-AC94-B884DDCD56C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleGmail", "ModuleGmail\ModuleGmail.csproj", "{EC5C3825-550F-4D66-A5F0-3D87043AA077}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleDropbox", "ModuleDropbox\ModuleDropbox.csproj", "{8A3B2D7D-6570-4C24-BFA5-8B9BDA09C6A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleSteam", "ModuleSteam\ModuleSteam.csproj", "{92E1DF68-2F7B-4A6A-9972-BE5D679E286A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResponse", "HttpResponse\HttpResponse.csproj", "{5B55B7FF-4515-4054-AA56-D9B2B325F2EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,15 +96,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FC46F1BC-8B35-4BBF-AE50-C19A79760A3C}
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F530CC0E-46B4-4B69-972C-E148E3448FED}
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B5CE4141-1740-47E4-ADD6-C0B09902BD0E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CC4E2D48-BEE7-4E66-83D4-C09599475B6A}

@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Area\Area.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
+    <ProjectReference Include="..\HttpResponse\HttpResponse.csproj" />
     <ProjectReference Include="..\LinkerModule\LinkerModule.csproj" />
   </ItemGroup>
   <ItemGroup>
