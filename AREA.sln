@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{03228444-4651-4D78-8B43-14CDFAA76608}"
 EndProject
@@ -17,17 +17,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkerModule", "LinkerModule\LinkerModule.csproj", "{C83965AD-8401-4F4B-AC94-B884DDCD56C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleGmail", "ModuleGmail\ModuleGmail.csproj", "{EC5C3825-550F-4D66-A5F0-3D87043AA077}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleGmail", "ModuleGmail\ModuleGmail.csproj", "{EC5C3825-550F-4D66-A5F0-3D87043AA077}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Area", "Area\Area.csproj", "{D17D05DA-4D12-48A1-90DF-ECD009122F5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Area", "Area\Area.csproj", "{D17D05DA-4D12-48A1-90DF-ECD009122F5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleBattlenet", "ModuleBattlenet\ModuleBattlenet.csproj", "{4CD4BDEA-6CAF-4AA8-91AB-4DB1BF36CFAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleBattlenet", "ModuleBattlenet\ModuleBattlenet.csproj", "{4CD4BDEA-6CAF-4AA8-91AB-4DB1BF36CFAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleTwitter", "ModuleTwitter\ModuleTwitter.csproj", "{8AF03591-B76D-462E-A91D-6B016A305316}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleTwitter", "ModuleTwitter\ModuleTwitter.csproj", "{8AF03591-B76D-462E-A91D-6B016A305316}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleDropbox", "ModuleDropbox\ModuleDropbox.csproj", "{8A3B2D7D-6570-4C24-BFA5-8B9BDA09C6A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleDropbox", "ModuleDropbox\ModuleDropbox.csproj", "{8A3B2D7D-6570-4C24-BFA5-8B9BDA09C6A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleSteam", "ModuleSteam\ModuleSteam.csproj", "{92E1DF68-2F7B-4A6A-9972-BE5D679E286A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuleSteam", "ModuleSteam\ModuleSteam.csproj", "{92E1DF68-2F7B-4A6A-9972-BE5D679E286A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResponse", "HttpResponse\HttpResponse.csproj", "{799245C2-FE95-48D3-98B2-3A6600FEE603}"
 EndProject
@@ -65,10 +65,6 @@ Global
 		{C83965AD-8401-4F4B-AC94-B884DDCD56C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C83965AD-8401-4F4B-AC94-B884DDCD56C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C83965AD-8401-4F4B-AC94-B884DDCD56C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5571D5F2-DF2A-44A9-BB10-450ED5259177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5571D5F2-DF2A-44A9-BB10-450ED5259177}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5571D5F2-DF2A-44A9-BB10-450ED5259177}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5571D5F2-DF2A-44A9-BB10-450ED5259177}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC5C3825-550F-4D66-A5F0-3D87043AA077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC5C3825-550F-4D66-A5F0-3D87043AA077}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC5C3825-550F-4D66-A5F0-3D87043AA077}.Release|Any CPU.ActiveCfg = Release|Any CPU
