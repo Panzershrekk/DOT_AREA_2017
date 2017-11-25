@@ -4,11 +4,19 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0-preview-20170628-02" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
     <PackageReference Include="xunit" Version="2.2.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Api\Api.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
+    <ProjectReference Include="..\HttpResponse\HttpResponse.csproj" />
+    <ProjectReference Include="..\ModuleBattlenet\ModuleBattlenet.csproj" />
+    <ProjectReference Include="..\Module\Module.csproj" />
+    <ProjectReference Include="..\LinkerModule\LinkerModule.csproj" />
+    <ProjectReference Include="..\ModuleFacebook\ModuleFacebook.csproj" />
+    <ProjectReference Include="..\ModuleGmail\ModuleGmail.csproj" />
+    <ProjectReference Include="..\ModuleTwitter\ModuleTwitter.csproj" />
   </ItemGroup>
 </Project>

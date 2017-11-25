@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Module\Module.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SteamWebAPI" Version="1.0.14.42195" />
+  </ItemGroup>
+</Project>
