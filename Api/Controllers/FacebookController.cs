@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using JsonApiSerializer;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Api.Controllers
 {
@@ -11,25 +13,38 @@ namespace Api.Controllers
         {
             module = new Module.ModuleFacebook();
         }
-        
+
         [HttpGet]
         public string Index()
         {
             return module.GetRequest();
         }
 
-        [HttpPost]
-        public string Post([FromBody] string value)
+
+        [HttpPost("Post")]
+        public string PostStatus(string message)
         {
-            return module.PostRequest();
+            return module.PostStatus(message);
         }
 
-        /*
-        [HttpGet("toto/{id}")]
-        public string Get(int id)
+        [HttpGet("Webhook")]
+        public string VerifWebhook(string message)
         {
-            return $"toto-id = {id}";
+            System.Console.WriteLine("Hello webhook");
+            var data = Request.Query;
+            if (data["hub.mode"] == "subscribe" && data["hub.verify_token"] == "123456789")
+            {
+                var retVal = data["hub.challenge"];
+                return retVal;
+             //   return JsonConvert.SerializeObject(retVal, new JsonApiSerializerSettings());
+            }
+            return JsonConvert.SerializeObject("", new JsonApiSerializerSettings());
         }
-        */
+
+        [HttpPost("Webhook")]
+        public string Webhook(string message)
+        {
+            return module.Webhook(message);
+        }
     }
 }

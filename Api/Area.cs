@@ -6,7 +6,7 @@ namespace Api
     {
         private Database Database { get; set; }
 
-        private void InitDatabase()
+     /*   private void InitDatabase()
         {
             var daoFactory = new DaoFactory("database.properties");
             Database = daoFactory.GetInstance();
@@ -21,11 +21,11 @@ namespace Api
                 ") ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;";
             
             Database.Execute(initTableRequest);
-        }
+        }*/
         
         public void Init()
         {
-            InitDatabase();
+            //InitDatabase();
         }
     }
 }

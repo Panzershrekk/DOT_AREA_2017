@@ -29,6 +29,8 @@ namespace Module
 
         public string PostRequest(string msg)
         {
+            if (msg == "" || msg == null)
+                return JsonConvert.SerializeObject("need params after post request", new JsonApiSerializerSettings());
             var tweet = Tweet.PublishTweet(msg);
             return JsonConvert.SerializeObject(msg, new JsonApiSerializerSettings());
         }

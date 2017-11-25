@@ -21,9 +21,9 @@ namespace Api.Controllers
 
 
         [HttpPost("Post")]
-        public string Post(string Name)
+        public string Post(string msg)
         {
-            return module.PostRequest(Name);
+            return module.PostRequest(msg);
         }
     }
 }
