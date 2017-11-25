@@ -6,6 +6,7 @@
     <ProjectReference Include="..\Module\Module.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Facebook" Version="7.0.6" />
     <PackageReference Include="JsonApiSerializer" Version="1.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
