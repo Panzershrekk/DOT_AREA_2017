@@ -1,5 +1,7 @@
 ﻿using JsonApiSerializer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Module;
 using Newtonsoft.Json;
 
 namespace Api.Controllers
@@ -7,36 +9,46 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class FacebookController : Controller
     {
-        private Module.ModuleFacebook module { get; set; }
-
-        public FacebookController()
-        {
-            module = new Module.ModuleFacebook();
-        }
-
-        [HttpGet]
+        [HttpGet("me")]
         public string Index()
         {
-            return module.GetRequest();
+            var ret = Area.Modules[typeof(ModuleFacebook)].FacebookGetMe();
+            var jsonObj =
+                JsonConvert.SerializeObject(ret,
+                    new JsonApiSerializerSettings());
+            Area.Linker.ExecuteReactions("FacebookGetMe", Area.User, jsonObj);
+            return JsonConvert.SerializeObject(ret,
+                new JsonApiSerializerSettings());
         }
 
-
-        [HttpPost("Post")]
-        public string PostStatus(string message)
+        [HttpPost("post")]
+        public string PostStatus(IFormCollection collection)
         {
-            return module.PostStatus(message);
+            var httpResponse = new HttpResponse.HttpRequest();
+            if (!collection.ContainsKey("message"))
+            {
+                httpResponse.Message =
+                    "The post request must specified the message field";
+                return httpResponse.ToJson();
+            }
+            var message = collection["message"];
+            if (!Area.Modules[typeof(ModuleFacebook)].PostStatus(message))
+            {
+                httpResponse.Message =
+                    "An error occured when try to post on Facebook";
+                return httpResponse.ToJson();
+            }
+            httpResponse.Status = "OK";
+            return httpResponse.ToJson();
         }
 
-        [HttpGet("Webhook")]
-        public string VerifWebhook(string message)
+        public string VerifWebhook()
         {
-            System.Console.WriteLine("Hello webhook");
             var data = Request.Query;
             if (data["hub.mode"] == "subscribe" && data["hub.verify_token"] == "123456789")
             {
                 var retVal = data["hub.challenge"];
                 return retVal;
-             //   return JsonConvert.SerializeObject(retVal, new JsonApiSerializerSettings());
             }
             return JsonConvert.SerializeObject("", new JsonApiSerializerSettings());
         }
@@ -44,7 +56,7 @@ namespace Api.Controllers
         [HttpPost("Webhook")]
         public string Webhook(string message)
         {
-            return module.Webhook(message);
+            return Area.Modules[typeof(ModuleFacebook)].Webhook(message);
         }
     }
 }
