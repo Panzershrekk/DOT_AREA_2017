@@ -19,31 +19,22 @@ namespace Module
             Fb.AppSecret = "243701dadc53d3879683e0d8e2bff36c";
         }
 
-        public string GetRequest()
+        public object FacebookGetMe()
         {
-            dynamic result = "";
+            object result = "";
             try
             {
-                var parameters = new Dictionary<string, object>();
-                parameters["fields"] = "id,message";
                 result = Fb.Get("/me");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-            return JsonConvert.SerializeObject(result, new JsonApiSerializerSettings());
+            return result;
         }
 
-        public string PostRequest()
+        public bool PostStatus(string message)
         {
-            return JsonConvert.SerializeObject("", new JsonApiSerializerSettings());
-        }
-
-        public string PostStatus(string message)
-        {
-            if (message == "" || message == null)
-                return JsonConvert.SerializeObject("need params after post request", new JsonApiSerializerSettings());
             try
             {
                 dynamic messagePost = new ExpandoObject();
@@ -51,20 +42,40 @@ namespace Module
                 messagePost.message = message;
                 Fb.Post("/me/feed", messagePost);
             }
-            catch (Facebook.FacebookOAuthException ex)
+            catch (Facebook.FacebookOAuthException)
             {
-                System.Console.WriteLine(ex.Message);
+                return false;
             }
-            catch (Facebook.FacebookApiException ex)
+            catch (Facebook.FacebookApiException)
             {
-                System.Console.WriteLine(ex.Message);
+                return false;
             }
-            return JsonConvert.SerializeObject(message, new JsonApiSerializerSettings());
+            return true;
         }
 
         public string Webhook(string message)
         {
             return JsonConvert.SerializeObject(message, new JsonApiSerializerSettings());
+        }
+        
+        /**
+         * Reactions
+         */
+        public ReactionResult ReactionFacebookPost(DAO.User user, string msg)
+        {
+            var result = new ReactionResult();
+            try
+            {
+                if (PostStatus(msg))
+                    throw new Exception();
+                result.Type = ReactionStatus.Ok;
+            }
+            catch (Exception e)
+            {
+                result.Type = ReactionStatus.Error;
+                result.Message = "Cannot publish to Facebook";
+            }
+            return result;
         }
     }
 }
