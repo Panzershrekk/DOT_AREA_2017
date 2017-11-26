@@ -19,7 +19,7 @@ namespace Module
             Fb.AppSecret = "243701dadc53d3879683e0d8e2bff36c";
         }
 
-        public override string GetRequest()
+        public string GetRequest()
         {
             dynamic result = "";
             try
@@ -35,7 +35,7 @@ namespace Module
             return JsonConvert.SerializeObject(result, new JsonApiSerializerSettings());
         }
 
-        public override string PostRequest()
+        public string PostRequest()
         {
             return JsonConvert.SerializeObject("", new JsonApiSerializerSettings());
         }
