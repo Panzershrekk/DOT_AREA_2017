@@ -14,7 +14,7 @@ namespace Api.Controllers
 
         public LinkerController()
         {
-            Linker = Area.Linker;
+            
         }
 
         [HttpPost]

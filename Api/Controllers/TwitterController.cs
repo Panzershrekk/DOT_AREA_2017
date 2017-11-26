@@ -17,12 +17,6 @@ namespace Api.Controllers
             return JsonConvert.SerializeObject(username, new JsonApiSerializerSettings());
         }
 
-        [HttpPost("Post")]
-        public string Post(string msg)
-        {
-            return module.PostRequest(msg);
-        }
-
         [HttpPost("post")]
         public string PostTwit(IFormCollection collection)
         {
