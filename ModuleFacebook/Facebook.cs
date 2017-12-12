@@ -33,7 +33,7 @@ namespace Module
             return result;
         }
 
-        public bool PostStatus(string message)
+        public bool FacebookPostStatus(string message)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace Module
             var result = new ReactionResult();
             try
             {
-                if (PostStatus(msg))
+                if (FacebookPostStatus(msg))
                     throw new Exception();
                 result.Type = ReactionStatus.Ok;
             }

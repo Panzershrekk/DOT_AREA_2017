@@ -32,13 +32,15 @@ namespace Api.Controllers
                 return httpResponse.ToJson();
             }
             var message = collection["message"];
-            if (!Area.Modules[typeof(ModuleFacebook)].PostStatus(message))
+            if (!Area.Modules[typeof(ModuleFacebook)].FacebookPostStatus(message))
             {
                 httpResponse.Message =
                     "An error occured when try to post on Facebook";
                 return httpResponse.ToJson();
             }
             httpResponse.Status = "OK";
+            Area.Linker.ExecuteReactions("FacebookPostStatus", Area.User,
+                message);
             return httpResponse.ToJson();
         }
 
