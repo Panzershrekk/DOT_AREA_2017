@@ -1,0 +1,369 @@
+{
+	"info": {
+		"name": "AREA.NET",
+		"_postman_id": "ac3eeb06-04ee-9cca-7c32-6187768b9814",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Twitter",
+			"description": "",
+			"item": [
+				{
+					"name": "[POST][TWITTER] Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "message",
+									"value": "My post",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/twitter/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"twitter",
+								"post"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[GET][TWITTER] User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/api/twitter/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"twitter",
+								"user"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gmail",
+			"description": "",
+			"item": [
+				{
+					"name": "[GET][GMAIL] Labels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/api/gmail/label",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gmail",
+								"label"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[GET][GMAIL] Message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/api/gmail/message/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gmail",
+								"message",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[POST][GMAIL] Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "dest",
+									"value": "guillobits@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "subject",
+									"value": "OUVRE !",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "body",
+									"value": "Mon super email de la mort qui tue",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/gmail/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"gmail",
+								"message"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Steam",
+			"description": "",
+			"item": [
+				{
+					"name": "[GET][STEAM] Friends",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/api/Steam/friends",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Steam",
+								"friends"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Linker",
+			"description": "",
+			"item": [
+				{
+					"name": "[POST][LINKER] Link",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "act",
+									"value": "SteamHandleNewFriend",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "react",
+									"value": "ReactionSendMessage",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/linker",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"linker"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "[DELETE][LINKER] Link",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "act",
+									"value": "SteamHandleNewFriend",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "react",
+									"value": "ReactionSendMessage",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Linker",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Linker"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Battlenet",
+			"description": "",
+			"item": [
+				{
+					"name": "[GET][BATTLENET] Points",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/api/Battlenet/points/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Battlenet",
+								"points",
+								""
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dropbox",
+			"description": "",
+			"item": [
+				{
+					"name": "[POST][DROPBOX] Username",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/api/dropbox/username",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"dropbox",
+								"username"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Facebook",
+			"description": "",
+			"item": [
+				{
+					"name": "[GET][FACEBOOK] Me",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/api/facebook/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"facebook",
+								"me"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
